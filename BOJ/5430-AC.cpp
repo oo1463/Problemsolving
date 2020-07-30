@@ -20,7 +20,6 @@ deque<int> tokenize_getline(const string& data, const char delimiter = ',') {
 
 int main(){
 
-
 	int T;
 	string p;
 	int n;
@@ -65,7 +64,5 @@ int main(){
 		}
 
 		if (i < T - 1) cout << '\n';
-
 	}
-
 }
