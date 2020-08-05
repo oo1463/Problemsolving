@@ -6,10 +6,10 @@
 using namespace std;
 
 vector<int> vec;
+int arr[MAX + 1];
 
 void getChe() {
     int i;
-    int arr[MAX+1];
 
     for (i = 2; i <= MAX; i++) {
         arr[i] = i;
