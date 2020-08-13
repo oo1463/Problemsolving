@@ -31,21 +31,18 @@ int main() {
 
     sort(a, a + N);
 
-
     right = (a[N - 1] - a[0]) / (C - 1);
 
     while (left <= right) {
         mid = (left + right) / 2;
 
-        for (int i = 1; i < N; i++) {
-            
+        for (int i = 1; i < N; i++) {            
             d += a[i] - a[i - 1];
             if (d < mid) continue;
             else {
                 cnt++;
                 d = 0;
-            }
-            
+            }            
         }
 
         if (cnt >= C - 1) {
@@ -67,8 +64,8 @@ int main() {
 
 
 /*
-    Algorithm :
+    Algorithm : binary search
 
-    Time complexity : O(N^2)
+    Time complexity : O(NlogN)
 
 */
