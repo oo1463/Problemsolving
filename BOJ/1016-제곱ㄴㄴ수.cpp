@@ -1,4 +1,3 @@
-
 // https://www.acmicpc.net/problem/1016
 
 //시간제한  메모리
@@ -7,13 +6,12 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cstring>
 #define MAX 1000001
 using namespace std;
 
 vector<long long> vec;
 int arr[MAX];
-int fi[1000001];
-
 
 void getChe() {
     long long i;
@@ -26,19 +24,18 @@ void getChe() {
         if (arr[i] == 0)
             continue;
 
-        for (int j = i + i; j < MAX; j += i) {
+        for (long long j = i + i; j < MAX; j += i) {
             arr[j] = 0;
         }
-        
         vec.push_back(i*i);
     }
-
-    
 }
+
+bool visited[MAX];
+
 
 int main() {
 
-    long long i;
     long long min, max;
     int j, count = 0;
 
@@ -46,28 +43,33 @@ int main() {
     cin >> min >> max;
 
     getChe();
-
+    
     int len = vec.size();
+    
+    for (int i = 0; i < MAX; i++) visited[i] = false;
+    
+    for (j = 0; j < len; j++) {
+        if (vec[j] > max) break;
+        long long x = min / vec[j];
+        if (min % vec[j] != 0) x++;
 
-    for (i = min; i <= max; i++) {
-        for (j = 0; j < len && max >= vec[j]; j++) {
-            if (i % vec[j] == 0) {
-                count++;
-                break;
-            }
+        while (x * vec[j] <= max) {
+            visited[x * vec[j] - min] = true;
+            x++;
         }
     }
-    
 
-    cout << max - min +1 - count;
+    for (int i = 0; i <= max - min; i++) if (visited[i]) count++;
+   
+    cout << max - min + 1 - count;
 
     return 0;
 }
 
 
 /*
-    Algorithm :
+    Algorithm : eratos thenes
 
-    Time complexity :
+    Time complexity : O(max-min)
 
 */
