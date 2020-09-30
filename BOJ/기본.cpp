@@ -1,8 +1,5 @@
 // https://www.acmicpc.net/problem/
 
-//시간제한  메모리
-//
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -17,8 +14,7 @@ using namespace std;
 int main() {
     FAIO;
     
-	
-    
+   
     return 0;
 }
 
