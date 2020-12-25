@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <cstring>
+#include <string>
 #define el '\n'
 #define FAIO ios::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr)
 
