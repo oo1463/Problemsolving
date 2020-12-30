@@ -68,7 +68,7 @@ int main() {
 /*
     Algorithm : implementation, brute force
 
-    Time complexity : O(N^2)
+    Time complexity : O(NM)
 
     최악의 경우 C * 500 * 500 * 256 = C * 64,000,000 번의 연산이 필요
     
