@@ -40,8 +40,8 @@ int main() {
 
 
 /*
-    Algorithm : 
+    Algorithm : list, implementation
 
-    Time complexity : O(N^2)
+    Time complexity : O(K)
     
 */
