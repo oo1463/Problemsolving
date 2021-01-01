@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/
+// https://www.acmicpc.net/problem/2947
 
 #include <iostream>
 #include <vector>
@@ -37,7 +37,7 @@ int main() {
 
 
 /*
-    Algorithm : 
+    Algorithm : bubble sort
 
     Time complexity : O(N^2)
     
