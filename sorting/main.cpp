@@ -1,10 +1,11 @@
 #include <iostream>
 #include "bubblesort.hpp"
 #include "selectionsort.hpp"
+#include "quicksort.hpp"
 #include <vector>
 using namespace std;
 
-int arr[10] = {1, 6, 3, 7, 2, 4, 5, 0, 9, 8};
+int arr[10] = {4, 6, 3, 7, 2, 1, 5, 0, 9, 8};
 vector<int> arr2;
 
 void print_arr(int *arr){
@@ -23,7 +24,9 @@ int main(){
 
     // bubble(arr2);
 
-    selection(arr);
+    // selection(arr);
+
+    quick_sort(arr, 0, 9);
 
     cout << "After sort array : ";
     for(auto a : arr) {
