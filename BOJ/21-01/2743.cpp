@@ -24,11 +24,3 @@ int main() {
     return 0;
 }
 
-
-
-/*
-    Algorithm : 
-
-    Time complexity : O(N^2)
-    
-*/
