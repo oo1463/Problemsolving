@@ -29,21 +29,15 @@ int main() {
         for(int j=1; j<=W; j++){
             if(i==1 && j == 1) dp[i][j] = N-1;
             else {
-                int tmp1, tmp2;
-                if(map[i][j-1] && dp[i][j-1] % 2 == 1){
-                    tmp1 = dp[i][j-1]/2 + 1;
-                }
-                else{
-                    tmp1 = dp[i][j-1]/2;
-                }
-                if(!map[i-1][j] && dp[i-1][j] % 2 == 1){
-                    tmp2 = dp[i-1][j]/2 + 1;
-                }
-                else{
-                    tmp2 = dp[i-1][j]/2;
-                }
+                dp[i][j] = dp[i][j-1]/2 + dp[i-1][j]/2;
 
-                dp[i][j] = tmp1 + tmp2;
+                if(map[i][j-1] && dp[i][j-1] % 2 == 1){
+                    dp[i][j]++;
+                }
+                
+                if(!map[i-1][j] && dp[i-1][j] % 2 == 1){
+                    dp[i][j]++;
+                }
             }
 
             if(dp[i][j] % 2 == 1){
