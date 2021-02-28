@@ -43,7 +43,7 @@ void update(int start, int end, int node, int index, int diff){
     int mid = (start + end) / 2;
 
     update(start, mid, node*2, index, diff);
-    update(mid, end, node*2+1, index, diff);
+    update(mid+1, end, node*2+1, index, diff);
     
 }
 
