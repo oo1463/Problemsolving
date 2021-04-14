@@ -1,7 +1,7 @@
 # Algorithm study
 --------------
 
-## 1일 1 알고리즘
+## 꾸준한 알고리즘 Solve
 
 BOJ
 
