@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/14438
+// https://www.acmicpc.net/problem/14428
 
 #include <iostream>
 #include <vector>
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-pair<int,int> tree[304002];
+pair<int,int> tree[404002];
 int arr[100001];
 
 // 세그먼트트리 초기화
@@ -39,9 +39,9 @@ pair<int,int> init(int start, int end, int node){
 
 pair<int,int> query(int start, int end, int node, int left, int right){ 
     // 범위 밖에 있는 경우
-    if(left > end || right < start) return {10000001, node};
+    if(left > end || right < start) return {2000000001, start};
 
-    if(left <= start && right >= end) {
+    if(left <= start && right >= end) {        
         return tree[node];
     }
 
@@ -49,15 +49,16 @@ pair<int,int> query(int start, int end, int node, int left, int right){
 
     pair<int,int> l = query(start, mid, node * 2, left, right);
     pair<int,int> r = query(mid + 1, end, node*2 + 1, left, right);
+    pair<int,int> t;
     if(l.first > r.first){
-        tree[node].first = r.first;
-        tree[node].second = r.second;
+        t.first = r.first;
+        t.second = r.second;
     }
     else{
-        tree[node].first = l.first;
-        tree[node].second = l.second;
+        t.first = l.first;
+        t.second = l.second;
     }
-    return tree[node];
+    return t;
 }
 
 // index : 수정하고자 하는 노드의 index, changed : 해당 값을 변경하고자 하는 값
@@ -66,14 +67,24 @@ pair<int,int> update(int start, int end, int node, int index, int changed){
 
     if(start == end) {
         arr[start] = changed;
-        tree[node] = changed;        
+        tree[node].first = changed;        
+        tree[node].second = start;
         return tree[node];
     }
     int mid = (start + end) / 2;
 
-    int l = update(start, mid, node*2, index, changed);
-    int r = update(mid+1, end, node*2+1, index, changed);
-    tree[node] = l < r ? l : r;
+    pair<int,int> l = update(start, mid, node*2, index, changed);
+    pair<int,int> r = update(mid+1, end, node*2+1, index, changed);
+
+    if(l.first > r.first){
+        tree[node].first = r.first;
+        tree[node].second = r.second;
+    }
+    else{
+        tree[node].first = l.first;
+        tree[node].second = l.second;
+    }
+    
     return tree[node];
 }
 
@@ -90,7 +101,7 @@ int main() {
         int a,b,c;
         cin >> a >> b >> c;
         if(a == 1) update(1,n,1, b, c);
-        else cout << query(1,n,1,b,c) << el;
+        else cout << query(1,n,1,b,c).second << el;
     }
     
     return 0;
