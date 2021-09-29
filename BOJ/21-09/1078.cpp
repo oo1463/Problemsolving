@@ -21,12 +21,10 @@ int reverse(int s){
         }
     }
 
-    int inversed = 0;
+    double inversed = 0;
 
     for(int i=0; i<digit; i++){
-        cout << (s % 10)*pow(10,digit-i-1) << el;
-        inversed = inversed + (s % 10)*pow(10,digit-i-1);
-        cout << inversed << el;
+        inversed += (int)(s % 10)*pow(10,digit-i-1);
         s /= 10;
     }
 
@@ -39,19 +37,19 @@ int main() {
     int d;
     cin >> d;
 
-    cout << reverse(1010100) << el;
+    // cout << reverse(1010100) << el;
 
-    // for(int i=1; i<2000000; i++){
+    for(int i=1; i<2000000; i++){
         
-    //     int rev = reverse(i);
-    //     if(i-rev < 0) continue;
+        int rev = reverse(i);
+        if(i-rev < 0) continue;
 
-    //     cout << i << ' ' << ' ' << rev << ' ' << i-rev << el;
-    //     if(i-rev == d) {
-    //         cout << i;
-    //         return 0;
-    //     }
-    // }
+        // cout << i << ' ' << ' ' << rev << ' ' << i-rev << el;
+        if(i-rev == d) {
+            cout << i;
+            return 0;
+        }
+    }
 
     cout << -1;
    
