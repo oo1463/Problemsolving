@@ -16,17 +16,9 @@ char map[10][10];
 
 bool is_square(string s){
     int n = stoi(s);
-    if(sqrt(n)*sqrt(n) == n) return true;
+    if(sqrt(n) == (int) sqrt(n)) return true;
 
     return false;
-}
-
-string reverse(string s){
-    for(int i=0; i<s.size()/2; i++){
-        swap(s[i], s[s.size() - i - 1]);
-    }
-
-    return s;
 }
 
 int main() {
@@ -41,10 +33,7 @@ int main() {
         }
     }
 
-    
     int mx = -1;
-
-   
 
     for(int i=0; i<N; i++){
         for(int j=0; j<M; j++){
@@ -54,15 +43,18 @@ int main() {
                 mx = stoi(ts);
             }
             
-            for(int x=-9; x<=9; x++){
-                for(int y=-9; y<=9; y++){
-                    string tmp_making;
-                    tmp_making += map[i][j];
-                    if(x==0 && y==0) continue;
+            for(int x=-N; x<=N; x++){
+                for(int y=-M; y<=M; y++){
+                    string tmp_making = ts;
+                    // tmp_making += map[i][j];
+                    if(x==0 && y == 0) continue;
 
                     for(int mult=1; mult<=8; mult++){
-                        if((i+x*mult) >= 0 && (i+x*mult) <N && (j+y*mult) >=0 && (j+y*mult)<M){
-                            tmp_making += map[(i+x*mult)][(j+y*mult)];
+                        int new_x = i + x*mult;
+                        int new_y = j + y*mult;
+                        if(new_x >= 0 && new_x < N && new_y >= 0 && new_y < M){
+                            tmp_making += map[new_x][new_y];
+                            // cout << tmp_making << el;
                             if(is_square(tmp_making) && stoi(tmp_making) > mx){
                                 mx = stoi(tmp_making);
                             }
@@ -80,8 +72,8 @@ int main() {
 
 
 /*
-    Algorithm : 
+    Algorithm : BruteForce
 
-    Time complexity : O(N^2)
+    Time complexity : O(N^5)
     
 */
